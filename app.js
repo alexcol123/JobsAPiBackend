@@ -8,14 +8,18 @@ const app = express()
 const connectDB = require('./db/connect')
 
 // Routers
+const authRouter = require('./routes/auth')
 
 // Error Handler
+const errorHandlerMiddleware = require('./middleware/error-handler')
 
 app.use(express.json())
 
 // Routes
+app.use('/api/v1/auth', authRouter)
 
 // Middlewares
+app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 3000
 
