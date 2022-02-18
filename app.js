@@ -9,17 +9,22 @@ const connectDB = require('./db/connect')
 
 // Routers
 const authRouter = require('./routes/auth')
+const jobsRouter = require('./routes/jobs')
 
-// Error Handler
+// Error Handler + Not found
 const errorHandlerMiddleware = require('./middleware/error-handler')
+const notFoundMiddleware = require('./middleware/not-found')
 
 app.use(express.json())
 
 // Routes
 app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/jobs', jobsRouter)
+
 
 // Middlewares
 app.use(errorHandlerMiddleware)
+app.use(notFoundMiddleware)
 
 const port = process.env.PORT || 3000
 
