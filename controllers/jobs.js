@@ -27,9 +27,6 @@ const createJob = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ job })
 }
 
-
-
-
 const updateJob = async (req, res) => {
   const {
     user: { userId },
